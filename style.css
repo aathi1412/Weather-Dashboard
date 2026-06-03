@@ -1,15 +1,19 @@
+ @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;400;700;900&display=swap');
+
 *{
     margin: 0;
     padding: 0;
-    @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 }
 body{
-    font-family: 'poppins', sans-serif;
-    background: url();
+    font-family: 'Poppins', sans-serif;
+    background: url('./images/image8.jpg');
+    background-size: 2000px;
+    background-repeat: no-repeat;
 }
 .container-header{
     margin: 0;
-    background-color: black;
+    margin-bottom: 40px;
+    /* background-color: black; */
     
 }
 .header-main{
@@ -26,20 +30,11 @@ body{
     text-align: center;
 }
 
-    .city-name{
-        display: flex;
-        align-items: center;
-        justify-content:flex-end;
-    }
-    .date-time{
-        display: flex;
-        justify-content: flex-start;
-    }
 
 
 /* responsive mobile */
 
-@media (max-width: 600px){
+@media (max-width: 700px){
 
     .header-search{
         height: 70px;
@@ -61,20 +56,65 @@ body{
         border: none;
     }
 
+    /* current info date time */
+
+    .current-info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 150px;
+    }
+    .city-name-header{
+        margin-right: 50px;
+    }
+    .city-name-header .city-name{
+        color: white;
+        font-size: 30px;
+    } 
+
+    .date-time{
+        color: white;
+        margin-left: 40px;
+    }
+    .date-time .time{
+        margin: 2px;
+        font-size: 50px;
+    }
+    .date-time .date{
+        font-size: 20px;
+    }
+
     /* current weather dashboard */
 
-    .section-1{
+    .current-weather-info{
         display: flex;
         justify-content: center;
-        align-items: center;
-        height: 30vh;
+        align-items: flex-start;
+        height: 20vh;
         flex-direction: column;
+        margin-left: 70px;
+        
+        
     }
-    
-    .current-section{
+    .current-weather-box{
+        background-color: rgba(24, 24, 27, 0.5);
+        color: white;
+        border-radius: 20px; 
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
         width: 250px;
-        height: 150px;
-        background-color: rgb(177, 145, 145);
+    }
+    .current-weather-box .essential{
+        display: flex;
+        justify-content: space-around;
+        padding: 5px;
+        /* margin-right: 10px; */
+    }
+
+    .current-weather-box .weather-items{
+        text-align: center;
     }
 
     /* current weather cards */
@@ -136,7 +176,7 @@ body{
 
 /* responsive 601px to 1000px */
 
-@media (min-width: 601px) and (max-width: 1000px){
+@media (min-width: 701px) and (max-width: 1000px){
 
     .header-search{
         height: 80px;
@@ -164,21 +204,72 @@ body{
         margin-right: 100px;
     }
 
+    /* current info date time */
+
+    .current-info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 150px;
+        margin-bottom: 20px;
+    }
+    .city-name-header{
+        margin-right: 70px;
+    }
+    .city-name-header .city-name{
+        color: white;
+        font-size: 40px;
+    } 
+
+    .date-time{
+        color: white;
+        margin-left: 70px;
+    }
+    .date-time .time{
+        margin: 2px;
+        font-size: 50px;
+    }
+    .date-time .date{
+        font-size: 20px;
+    }
+
     /* current weather dashboard */
 
-    .section-1{
+    .current-weather-info{
         display: flex;
         justify-content: center;
-        align-items: center;
-        height: 30vh;
-        margin: 40px 0;
+        align-items: flex-start;
+        height: 20vh;
+        flex-direction: column;
+        margin-left: 70px;
+        height: 20vh;
+        margin-bottom: 20px;
+        
     }
-    .current-section{
+    .current-weather-box{
+        background-color: rgba(24, 24, 27, 0.5);
+        color: white;
+        border-radius: 20px; 
+        display: flex;
+        flex-direction: column;
+        padding: 10px;
+        width: 250px;
+    }
+    .current-weather-box .essential{
+        display: flex;
+        justify-content: space-around;
+        padding: 5px;
+        /* margin-right: 10px; */
+    }
+
+    .current-weather-box .weather-items{
+        text-align: center;
+        padding: 5px;
+        /* display: flex; */
         flex: 1;
-        margin: 0 150px;
         max-width: 500px;
         height: 200px;
-        background-color: rgb(177, 145, 145);
     }
 
     /* current weather cards */
@@ -186,26 +277,14 @@ body{
     .section-grid{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 10px; 
-        height: 50px;
-        margin-bottom: 50px;
-        margin-left: 80px;
+        height: 70px;
+        margin: 50px;
+        justify-items: center;
     }
-    .grid-1{
+    .grid{
         width: 150px;
-        background-color: aqua;
-        text-align: center;
-        align-content: center;
-    }
-    .grid-2{
-        width: 150px;
-        background-color: aquamarine;
-        text-align: center;
-        align-content: center;
-    }
-    .grid-3{
-        width: 150px;
-        background-color: blue;
+        /* height: 100px; */
+        background-color: rgba(24,24,27,0.5);
         color: white;
         text-align: center;
         align-content: center;
@@ -243,6 +322,7 @@ body{
 /* responsive for pc or more width screen */
 
 @media (min-width: 1001px){
+
     .header-search{
         height: 90px;
         display: flex;
@@ -269,19 +349,66 @@ body{
         margin-right: 110px;
     }
 
+    /* current info date time */
+
+    .current-info{
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        height: 150px;
+        margin-bottom: 20px;
+    }
+    .city-name-header{
+        margin-right: 100px;
+    }
+    .city-name-header .city-name{
+        color: white;
+        font-size: 60px;
+    } 
+
+    .date-time{
+        color: white;
+        margin-left: 100px;
+    }
+    .date-time .time{
+        margin: 2px;
+        font-size: 70px;
+    }
+    .date-time .date{
+        font-size: 20px;
+    }
+
     /* current weather dashboard */
 
-    .section-1{
+    .current-weather-info{
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-start;
         height: 30vh;
-        margin: 100px 0;
+        flex-direction: column;
+        margin-left: 70px;
     }
-    .current-section{
-        width: 600px;
-        height: 300px;
-        background-color: rgb(177, 145, 145);
+    .current-weather-box{
+        background-color: rgba(24, 24, 27, 0.5);
+        color: white;
+        border-radius: 20px; 
+        display: flex;
+        flex-direction: column;
+        padding:  20px 10px;
+        width: 400px;
+        height: 200px;
+    }
+    .current-weather-box .essential{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .current-weather-box .weather-items{
+        font-size: 20px;
+        text-align: center;
+        padding: 10px;
+        margin: 0 80px;
     }
 
     /* current weather cards */
@@ -289,26 +416,14 @@ body{
     .section-grid{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        gap: 10px; 
-        height: 50px;
-        margin-bottom: 50px;
-        margin-left: 80px;
+        height: 100px;
+        margin: 50px;
+        justify-items: center;
     }
-    .grid-1{
-        width: 150px;
-        background-color: aqua;
-        text-align: center;
-        align-content: center;
-    }
-    .grid-2{
-        width: 150px;
-        background-color: aquamarine;
-        text-align: center;
-        align-content: center;
-    }
-    .grid-3{
-        width: 150px;
-        background-color: blue;
+    .grid{
+        width: 200px;
+        /* height: 100px; */
+        background-color: rgba(24,24,27,0.5);
         color: white;
         text-align: center;
         align-content: center;
