@@ -79,10 +79,14 @@ body{
     .city-name-header{
         margin-right: 50px;
     }
+    .city-name-header #code{
+        font-size: 30px;
+    }
     .city-name-header .city-name{
         color: white;
-        font-size: 30px;
-    } 
+        font-size: 40px;
+        text-align: end;
+    }
 
     .date-time{
         color: white;
@@ -105,7 +109,8 @@ body{
         height: 30vh;
         flex-direction: column;
         margin-top: 50px;
-        
+        overflow-y:scroll;
+        justify-content: start;
     }
     .current-weather-box{
         border: 1px solid white;
@@ -302,9 +307,13 @@ body{
     .city-name-header{
         margin-right: 70px;
     }
+    .city-name-header #code{
+        font-size: 30px;
+    }
     .city-name-header .city-name{
         color: white;
         font-size: 40px;
+        text-align: end;
     } 
 
     .date-time{
@@ -525,15 +534,19 @@ body{
         justify-content: space-between;
         align-items: center;
         flex-wrap: wrap;
-        height: 150px;
+        height: 200px;
         margin-bottom: 20px;
     }
     .city-name-header{
         margin-right: 100px;
     }
+    .city-name-header #code{
+        font-size: 30px;
+    }
     .city-name-header .city-name{
         color: white;
-        font-size: 60px;
+        font-size: 40px;
+        text-align: end;
     } 
 
     .date-time{
