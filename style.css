@@ -138,15 +138,21 @@ body{
         gap: 20px;
         margin: 50px 0;
     }
-    .grid{
+
+    .section-grid .grid{
         width: 200px;
-        height: 80px;
         border: 1px solid white;
+        border-radius: 20px;
         background-color: rgba(24,24,27,0.5);
         color: white;
         text-align: center;
-        align-content: center;
-        border-radius: 20px;
+        padding: 10px 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
     }
 
 /* forcast weather section */
@@ -358,18 +364,24 @@ body{
     .section-grid{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        height: 70px;
+        height: 120px;
         margin: 50px;
         justify-items: center;
     }
-    .grid{
-        width: 150px;
+    .section-grid .grid{
+        width: 200px;
         border: 1px solid white;
         border-radius: 20px;
         background-color: rgba(24,24,27,0.5);
         color: white;
         text-align: center;
-        align-content: center;
+        padding: 10px 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
     }
 
     /* forcast weather section */
@@ -575,18 +587,24 @@ body{
     .section-grid{
         display: grid;
         grid-template-columns: 1fr 1fr 1fr;
-        height: 100px;
+        height: 120px;
         margin: 50px;
         justify-items: center;
     }
-    .grid{
+    .section-grid .grid{
         width: 200px;
         border: 1px solid white;
         border-radius: 20px;
         background-color: rgba(24,24,27,0.5);
         color: white;
         text-align: center;
-        align-content: center;
+        padding: 10px 0;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
     }
 
     /* forcast weather section */
