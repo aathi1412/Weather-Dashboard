@@ -6,15 +6,20 @@
 }
 body{
     font-family: 'Poppins', sans-serif;
-    background: url('./images/image8.jpg');
+    background: url('./images/image1.jpg');
     background-size: cover;
     background-repeat: no-repeat;
+}
+
+.copyright{
+    color: white;
+    text-align: center;
+    margin: 30px 0;
+    font-size: 20px;
 }
 .container-header{
     margin: 0;
     margin-bottom: 40px;
-    /* background-color: black; */
-    
 }
 .header-main{
     height: 80px;
@@ -32,19 +37,48 @@ body{
 
 input.invalid-search{
     border: 5px solid red;
-    /* background-color: #ffe6e6; */
+}
+
+.error-message{
+        text-align: center;
+        font-size: 30px;
+        color: white;
+    }
+
+.loading{
+    display: none;
+    text-align: center;
+    color: white;
+    margin: 20px;
+}
+.loading .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255,255,255,0.3);
+    border-top: 5px solid white;
+    border-radius: 50%;
+    margin: 0 auto 10px;
+
+    animation: spin 1s linear infinite;
+}
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+.loading p{
+    margin-top: 20px;
+    font-size: 20px;
 }
 
 /* responsive mobile */
 
 @media (max-width: 700px){
 
-    .error-message{
-        text-align: center;
-        font-size: 30px;
-        color: white;
-    }
-
+    
     .header-search{
         height: 70px;
         display: flex;
@@ -280,12 +314,6 @@ input.invalid-search{
 /* responsive 601px to 1000px */
 
 @media (min-width: 701px) and (max-width: 1000px){
-
-    .error-message{
-        text-align: center;
-        font-size: 30px;
-        color: white;
-    }
 
     .header-search{
         height: 80px;
@@ -526,12 +554,6 @@ input.invalid-search{
 /* responsive for pc or more width screen */
 
 @media (min-width: 1001px){
-    .error-message{
-        text-align: center;
-        font-size: 30px;
-        color: white;
-    }
-
     .header-search{
         height: 90px;
         display: flex;

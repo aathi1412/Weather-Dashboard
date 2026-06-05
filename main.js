@@ -1,7 +1,7 @@
 import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 
 const API_KEY = 'a856a832c1394edf622f5ec5b344a1dd';
-let date = new Date();
+
 
 // -----------------------datae time
 const setTime = document.querySelector('.js-time');
@@ -15,32 +15,34 @@ setInterval(() => {
 }, 1000)
 //---------------background---------
 
-const images = [
-    "./images/image1.jpg",
-    "./images/image3.jpg",
-    "./images/image4.jpg",
-    "./images/image5.jpg",
-    "./images/image6.jpg",
-    "./images/image7.jpg",
-    "./images/image8.jpg"
-];
+// const images = [
+//     "./images/image1.jpg",
+//     "./images/image3.jpg",
+//     "./images/image4.jpg",
+//     "./images/image5.jpg",
+//     "./images/image6.jpg",
+//     "./images/image7.jpg",
+//     "./images/image8.jpg"
+// ];
 
-let current = 0;
+// let current = 0;
 
-setInterval(() => {
-    document.body.style.backgroundImage =
-        `url(${images[current]})`;
+// setInterval(() => {
+//     document.body.style.backgroundImage =
+//         `url(${images[current]})`;
 
-    current++;
+//     current++;
 
-    if (current === images.length) {
-        current = 0;
-    }
-}, 30000);
+//     if (current === images.length) {
+//         current = 0;
+//     }
+// }, 30000);
 
 // -------current location------------
+const loading = document.querySelector('.loading');
 
 function getCurrentLocation(){
+    loading.style.display = 'block';
     navigator.geolocation.getCurrentPosition(async (position) => {
         const lat = position.coords.latitude;
         const lon = position.coords.longitude;
@@ -52,7 +54,7 @@ function getCurrentLocation(){
                 fetch(
                     `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
                 ),
-                fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${API_KEY}`)
+                fetch(`https://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${API_KEY}`)
             ]);
 
             const weatherData = await weatherRes.json();
@@ -66,6 +68,9 @@ function getCurrentLocation(){
         catch(error){
             alert(error);
             console.error(error);
+        }
+        finally{
+            loading.style.display = 'none';
         }
     },
     (error) => {
@@ -105,8 +110,9 @@ document.querySelector('.button-search').addEventListener('click', () => {
 
 
 let getCoordinates = async (cityName) => {
+    loading.style.display = 'block';
     try{
-        const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`;
+        const url = `https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`;
 
         const response = await fetch(url);
 
@@ -120,9 +126,12 @@ let getCoordinates = async (cityName) => {
         currentWeatherAPI(data);
     }
     catch(error){
-            alert(error);
-            console.error(error);
-        }
+        alert(error);
+        console.error(error);
+    }
+    finally{
+        loading.style.display = 'none';
+    }
 }
 
 const place = document.querySelector('#place');
@@ -146,7 +155,7 @@ let getPlace = (data) => {
 
 let currentWeatherAPI = async (data) => {
     let { lat, lon } = data[0];
-
+    loading.style.display = 'block';
     try{
         const [weatherRes, forecastRes] = await Promise.all([
             fetch(
@@ -166,6 +175,9 @@ let currentWeatherAPI = async (data) => {
     catch(error){
         alert(error);
         console.error(error);
+    }
+    finally{
+        loading.style.display = 'none';
     }
 }
 
@@ -199,11 +211,11 @@ let currentWeatherData = (data) => {
             </div>
             <div class="weather-items essential">
                 <div>Sunrise:</div>
-                <div>${dayjs(sunrise).format('HH: mm A')}</div>
+                <div>${dayjs.unix(sunrise).format('hh: mm A')}</div>
             </div>
             <div class="weather-items essential">
                 <div>Sunset:</div>
-                <div>${dayjs(sunset).format('HH: mm A')}</div>
+                <div>${dayjs.unix(sunset).format('hh: mm A')}</div>
             </div>
             <div class="weather-items">
                 <div>Feels like: 
@@ -272,7 +284,7 @@ let forecastAPI = (data) => {
     console.log(dailyForecast);
 
     let totalHTML = '';
-    dailyForecast.map((day) => {
+    dailyForecast.forEach((day) => {
         let html = `
             <div class="cards">
                 <div class="container-content">
@@ -282,11 +294,11 @@ let forecastAPI = (data) => {
                     </div>
                     <div class="content">
                         <p class="day">${dayjs(day.dt_txt).format('ddd')}</p>
-                        <p>High: <span>${day.main.temp_min} °C</span></p>
-                        <p>Low: <span>${day.main.temp_max} °C</span></p>
+                        <p>High: <span>${day.main.temp_max} °C</span></p>
+                        <p>Low: <span>${day.main.temp_min} °C</span></p>
                         <p>
                             <i class="fa-solid fa-droplet fa-beat" style="color: rgb(219, 222, 228);"></i>
-                            <span>${day.main.pressure} %</span>
+                            <span>${day.main.pressure} hPa</span>
                         </p>
                     </div>
                 </div>
