@@ -30,11 +30,20 @@ body{
     text-align: center;
 }
 
-
+input.invalid-search{
+    border: 5px solid red;
+    /* background-color: #ffe6e6; */
+}
 
 /* responsive mobile */
 
 @media (max-width: 700px){
+
+    .error-message{
+        text-align: center;
+        font-size: 30px;
+        color: white;
+    }
 
     .header-search{
         height: 70px;
@@ -76,7 +85,7 @@ body{
         height: 30vh;
     }
     .city-name-header{
-        margin-right: 30px;
+        margin-right: 15px;
     }
     .city-name-header #code{
         font-size: 20px;
@@ -85,6 +94,7 @@ body{
         color: white;
         font-size: 20px;
         text-align: end;
+        flex-wrap: wrap;
     }
 
     .date-time{
@@ -270,6 +280,12 @@ body{
 /* responsive 601px to 1000px */
 
 @media (min-width: 701px) and (max-width: 1000px){
+
+    .error-message{
+        text-align: center;
+        font-size: 30px;
+        color: white;
+    }
 
     .header-search{
         height: 80px;
@@ -510,6 +526,11 @@ body{
 /* responsive for pc or more width screen */
 
 @media (min-width: 1001px){
+    .error-message{
+        text-align: center;
+        font-size: 30px;
+        color: white;
+    }
 
     .header-search{
         height: 90px;
@@ -592,6 +613,7 @@ body{
         flex-direction: column;
         margin-left: 70px;
         margin-top: 70px;
+        margin-bottom: 10vh;
     }
     .current-weather-box{
         border: 1px solid white;
@@ -613,7 +635,7 @@ body{
         font-size: 20px;
         text-align: center;
         padding: 10px;
-        margin: 0 80px;
+        margin: 0 50px;
     }
 
     /* current weather cards */
@@ -647,29 +669,34 @@ body{
         background-color: rgba(24, 24, 27, 0.8);
         color: white;
         display: flex;
-        gap: 20px;
+        gap: 30px;
         height: 300px;
     }
     .container-future-forcast .weather-today-container{
-        /* flex: 1; */
-        width: 300px;
         display: flex;
         align-items: center;
         text-align: center;
-        
+        flex: .5;
     }
     .container-future-forcast .weather-today-container #cards-today{
         flex: 1;
         display: flex;
         height: 250px;
-        
+        width: 100%;
     }
     .container-future-forcast .weather-today-container #cards-today .image-contain{
-        display: flex;
+        display: grid;
         align-items: center;
+        flex: 1;
+        max-width: 230px;
+        padding: 10px 0;
     }
     .container-future-forcast .weather-today-container #cards-today .image-contain img{
-        width: 140px;
+        width: 100%;
+    }
+    .container-future-forcast .weather-today-container #cards-today .image-contain p{
+        font-size: 20px;
+        font-weight: 600;
     }
     .container-future-forcast .weather-today-container #cards-today .content-today{
         flex: 1;
@@ -695,32 +722,44 @@ body{
         flex: 1;
         align-items: center;
         justify-content: center;
-        gap: 10px;
+        gap: 20px;
     }
     .container-future-forcast .future-forcast-grid .cards{
         flex: 1;
         border: 1px solid white;
         border-radius: 20px;
         text-align: center;
+        height: 230px;
+        max-width: 300px;
     }
     .container-future-forcast .future-forcast-grid .cards .container-content{
         height: 200px;
         flex-wrap: wrap;
+        width: 100%;
     }
-    .container-future-forcast .future-forcast-grid .cards .container-content div{
+    .container-future-forcast .future-forcast-grid .cards .container-content .image-contain{
+        display: grid;
+        grid-template-columns: .3fr .5fr;
+        justify-content: center;
+        align-items: center;
+    }
+    .container-future-forcast .future-forcast-grid .cards .container-content .content{
         display: flex;
         flex-direction: column;
+        justify-content: center;
         align-items: center;
         gap: 6px;
+        margin-top: 16px;
     }
-    .container-future-forcast .future-forcast-grid .cards .container-content div .day{
+    .container-future-forcast .future-forcast-grid .cards .container-content .content .day{
+        text-align: center;
         margin-bottom: 5px;
         background-color: rgba(134, 129, 129, 0.5);
         border-radius: 20px;
         width: 70px;
     }
-    .container-future-forcast .future-forcast-grid .cards .container-content img{
-        width: 80px;
+    .container-future-forcast .future-forcast-grid .cards .container-content .image-contain img{
+        width: 100%;
     }
 
 }

@@ -3,49 +3,170 @@ import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 const API_KEY = 'a856a832c1394edf622f5ec5b344a1dd';
 let date = new Date();
 
+// -----------------------datae time
+const setTime = document.querySelector('.js-time');
+const setDate = document.querySelector('.js-date');
+
+setInterval(() => {
+    let date = new Date();
+    let time = date.getTime();
+    setTime.innerHTML = dayjs(time).format('HH:mm A');
+    setDate.innerHTML = dayjs(time).format('dddd, DD MMM');
+}, 1000)
+//---------------background---------
+
+const images = [
+    "./images/image1.jpg",
+    "./images/image3.jpg",
+    "./images/image4.jpg",
+    "./images/image5.jpg",
+    "./images/image6.jpg",
+    "./images/image7.jpg",
+    "./images/image8.jpg"
+];
+
+let current = 0;
+
+setInterval(() => {
+    document.body.style.backgroundImage =
+        `url(${images[current]})`;
+
+    current++;
+
+    if (current === images.length) {
+        current = 0;
+    }
+}, 30000);
+
+// -------current location------------
+
+function getCurrentLocation(){
+    navigator.geolocation.getCurrentPosition(async (position) => {
+        const lat = position.coords.latitude;
+        const lon = position.coords.longitude;
+        try{
+            const [weatherRes, forecastRes, currentLocationRes] = await Promise.all([
+                fetch(
+                    `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+                ),
+                fetch(
+                    `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+                ),
+                fetch(`http://api.openweathermap.org/geo/1.0/reverse?lat=${lat}&lon=${lon}&limit=1&appid=${API_KEY}`)
+            ]);
+
+            const weatherData = await weatherRes.json();
+            const forecastData = await forecastRes.json();
+            const currentLocation = await currentLocationRes.json();
+
+            currentWeatherData(weatherData);
+            forecastAPI(forecastData);
+            getPlace(currentLocation);
+        }
+        catch(error){
+            alert(error);
+            console.error(error);
+        }
+    },
+    (error) => {
+        document.querySelector('.error-message').innerHTML = 'Please allow location access to get local weather.'
+        alert("Please allow location access to get local weather.");
+        console.log(error.message);
+    });
+}
+getCurrentLocation();
+
 // search---------------------------
+
 const search = document.querySelector('.input-search');
 
-document.querySelector('.button-search').addEventListener('click', () => {
-    const cityName = search.value;
-    getCoordinates(cityName);
+search.addEventListener('keydown', (event) => {
+    if(event.key === 'Enter'){
+        const cityName = search.value.trim();
+        if(cityName === ''){
+            search.placeholder = 'Enter a city name';
+            return;
+        }
+        getCoordinates(cityName);
+        search.value = '';
+    }
 })
 
+document.querySelector('.button-search').addEventListener('click', () => {
+    const cityName = search.value.trim();
+    if(cityName === ''){
+        search.placeholder = 'Enter a city name';
+        return;
+    }
+    getCoordinates(cityName);
+    search.value = '';
+});
 
-let getCoordinates = (cityName) => {
-    fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`)
-    .then(res => res.json())
-    .then(data => {
-        // console.log(data);
+
+
+let getCoordinates = async (cityName) => {
+    try{
+        const url = `http://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`;
+
+        const response = await fetch(url);
+
+        if(!response.ok){
+            throw new Error(response.status);
+            return;
+        }
+        const data = await response.json();
+        
         getPlace(data);
         currentWeatherAPI(data);
-    });
+    }
+    catch(error){
+            alert(error);
+            console.error(error);
+        }
 }
 
 const place = document.querySelector('#place');
 const code = document.querySelector('#code');
 
 let getPlace = (data) => {
+    if(data.length === 0){
+        console.log('invalid city name');
+        search.placeholder = 'city not found';
+        search.classList.add('invalid-search');
+        return;
+    }
+    search.classList.remove('invalid-search');
+    search.placeholder = 'search city';
+    document.querySelector('.error-message').innerHTML = '';
     let { name, country, state} = data[0];
     place.innerHTML =  `${name}/${state}`
     code.innerHTML = country;
 }
 
 
-let currentWeatherAPI = (data) => {
+let currentWeatherAPI = async (data) => {
     let { lat, lon } = data[0];
 
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`).then(res => res.json()).then(data => {
-        console.log(data);
-        currentWeatherData(data);
-    })
+    try{
+        const [weatherRes, forecastRes] = await Promise.all([
+            fetch(
+                `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+            ),
+            fetch(
+                `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`
+            )
+        ]);
 
-    fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&units=metric&appid=${API_KEY}`).then(res => res.json()).then(data => {
-        console.log(data);
-        forecastAPI(data);
-    })
+        const weatherData = await weatherRes.json();
+        const forecastData = await forecastRes.json();
 
-    
+        currentWeatherData(weatherData);
+        forecastAPI(forecastData);
+    }
+    catch(error){
+        alert(error);
+        console.error(error);
+    }
 }
 
 const currentWeatherHTML = document.querySelector('.current-weather-info');
@@ -179,21 +300,3 @@ let forecastAPI = (data) => {
     
 }
 
-// -----------------------datae time
-const setTime = document.querySelector('.js-time');
-const setDate = document.querySelector('.js-date');
-
-setInterval(() => {
-    let date = new Date();
-    let time = date.getTime();
-    setTime.innerHTML = dayjs(time).format('HH:mm A');
-    setDate.innerHTML = dayjs(time).format('dddd, DD MMM');
-}, 1000)
-
-
-
-// let geocoding = ;
-
-
-
-// https://api.openweathermap.org/data/4.0/onecall/current?lat={lat}&lon={lon}&appid={a856a832c1394edf622f5ec5b344a1dd}
