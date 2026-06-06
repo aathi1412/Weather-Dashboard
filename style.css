@@ -53,6 +53,13 @@ input.invalid-search{
     font-size: 20px;
 }
 
+@media (hover: hover) {
+    .button-search:hover {
+        background-color: black;
+        color: white;
+    }
+}
+
 /* responsive mobile */
 @media (max-width: 415px){
 
@@ -109,13 +116,16 @@ input.invalid-search{
         font-size: 17px;
         color: black;
     }
-    .container-header .header-search .button-search:hover{
+    .container-header .header-search .button-search:active{
         background-color: yellow;
         color: black;
-        border: 1px solid white;
-        border-color: white;
+        border: 1px dashed black;
     }
-
+    .container-header .header-search .button-search::after{
+        background-color: white;
+        color: black;
+        border: none;
+    }
     /* current info date time */
 
     .current-info{
@@ -374,11 +384,15 @@ input.invalid-search{
         font-weight: 700;
         color: grey;
     }
-    .container-header .header-search .button-search:hover{
-        background-color: black;
-        color: white;
-        border: 1px solid white;
-        border-color: white;
+    .container-header .header-search .button-search:active{
+        background-color: yellow;
+        color: black;
+        border: 1px dashed black;
+    }
+    .container-header .header-search .button-search::after{
+        background-color: white;
+        color: black;
+        border: none;
     }
 
     /* current info date time */
@@ -638,11 +652,15 @@ input.invalid-search{
         font-weight: 700;
         color: grey;
     }
-    .container-header .header-search .button-search:hover{
-        background-color: black;
-        color: white;
-        border: 1px solid white;
-        border-color: white;
+    .container-header .header-search .button-search:active{
+        background-color: yellow;
+        color: black;
+        border: 1px dashed black;
+    }
+    .container-header .header-search .button-search::after{
+        background-color: white;
+        color: black;
+        border: none;
     }
 
     /* current info date time */
@@ -911,11 +929,15 @@ input.invalid-search{
 
         margin-right: 100px;
     }
-    .container-header .header-search .button-search:hover{
-        background-color: black;
-        color: white;
-        border: 1px solid white;
-        border-color: white;
+    .container-header .header-search .button-search:active{
+        background-color: yellow;
+        color: black;
+        border: 1px dashed black;
+    }
+    .container-header .header-search .button-search::after{
+        background-color: white;
+        color: black;
+        border: none;
     }
 
     /* current info date time */
@@ -1180,11 +1202,15 @@ input.invalid-search{
 
         margin-right: 100px;
     }
-    .container-header .header-search .button-search:hover{
-        background-color: black;
-        color: white;
-        border: 1px solid white;
-        border-color: white;
+    .container-header .header-search .button-search:active{
+        background-color: yellow;
+        color: black;
+        border: 1px dashed black;
+    }
+    .container-header .header-search .button-search::after{
+        background-color: white;
+        color: black;
+        border: none;
     }
 
     /* current info date time */
@@ -1452,11 +1478,15 @@ input.invalid-search{
 
         margin-right: 110px;
     }
-    .container-header .header-search .button-search:hover{
-        background-color: black;
-        color: white;
-        border: 1px solid white;
-        border-color: white;
+    .container-header .header-search .button-search:active{
+        background-color: yellow;
+        color: black;
+        border: 1px dashed black;
+    }
+    .container-header .header-search .button-search::after{
+        background-color: white;
+        color: black;
+        border: none;
     }
 
     /* current info date time */
@@ -1722,11 +1752,16 @@ input.invalid-search{
 
         margin-right: 110px;
     }
-    .container-header .header-search .button-search:hover{
-        background-color: black;
-        color: white;
-        border: 1px solid white;
-        border-color: white;
+
+    .container-header .header-search .button-search:active{
+        background-color: yellow;
+        color: black;
+        border: 1px dashed black;
+    }
+    .container-header .header-search .button-search::after{
+        background-color: white;
+        color: black;
+        border: none;
     }
 
     /* current info date time */
