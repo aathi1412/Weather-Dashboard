@@ -13,30 +13,6 @@ setInterval(() => {
     setTime.innerHTML = dayjs(time).format('HH:mm A');
     setDate.innerHTML = dayjs(time).format('dddd, DD MMM');
 }, 1000)
-//---------------background---------
-
-// const images = [
-//     "./images/image1.jpg",
-//     "./images/image3.jpg",
-//     "./images/image4.jpg",
-//     "./images/image5.jpg",
-//     "./images/image6.jpg",
-//     "./images/image7.jpg",
-//     "./images/image8.jpg"
-// ];
-
-// let current = 0;
-
-// setInterval(() => {
-//     document.body.style.backgroundImage =
-//         `url(${images[current]})`;
-
-//     current++;
-
-//     if (current === images.length) {
-//         current = 0;
-//     }
-// }, 30000);
 
 // -------current location------------
 const loading = document.querySelector('.loading');
@@ -312,3 +288,6 @@ let forecastAPI = (data) => {
     
 }
 
+// -------footer-----------
+document.getElementById("year").textContent =
+    new Date().getFullYear();
