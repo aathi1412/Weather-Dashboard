@@ -18,12 +18,6 @@ body{
     font-size: 20px;
 }
 
-
-input.invalid-search{
-    border: 5px solid red;
-}
-
-
 .loading{
     display: none;
     text-align: center;
@@ -57,8 +51,26 @@ input.invalid-search{
     .button-search:hover {
         background-color: black;
         color: white;
+        border: 3px solid white;
     }
 }
+.button-search:focus {
+    border: 3px solid black;
+}
+
+.input-search{
+    border: 5px solid white;
+}
+input.input-search:focus{
+    outline: none;
+    border: 5px solid rgb(22, 151, 215) ;
+}
+
+input.invalid-search{
+    outline: none;
+    border: 3px solid rgb(207, 83, 83);
+}
+
 
 /* responsive mobile */
 @media (max-width: 415px){
@@ -102,7 +114,6 @@ input.invalid-search{
         width: 230px;
         height: 40px;
         border-radius: 10px;
-        border: none;
         font-size: 20px;
         padding: 5px 0px 5px 20px;
     }
@@ -370,7 +381,6 @@ input.invalid-search{
         width: 250px;
         height: 40px;
         border-radius: 10px;
-        border: none;
         font-size: 20px;
         padding: 5px 0px 5px 20px;
     }
@@ -638,7 +648,6 @@ input.invalid-search{
         width: 290px;
         height: 40px;
         border-radius: 10px;
-        border: none;
         font-size: 20px;
         padding: 5px 0px 5px 20px;
     }
@@ -910,7 +919,6 @@ input.invalid-search{
         max-width: 500px;
         height: 40px;
         border-radius: 10px;
-        border: none;
         font-size: 20px;
         padding: 5px 0px 5px 30px;
 
@@ -1183,7 +1191,6 @@ input.invalid-search{
         max-width: 500px;
         height: 40px;
         border-radius: 10px;
-        border: none;
         font-size: 20px;
         padding: 5px 0px 5px 30px;
 
@@ -1460,12 +1467,12 @@ input.invalid-search{
         max-width: 700px;
         height: 50px;
         border-radius: 10px;
-        border: none;
         font-size: 20px;
         padding: 5px 0px 5px 20px;
 
         margin-left: 70px;
     }
+
     .button-search{
         flex: 1;
         height: 55px;
@@ -1734,7 +1741,6 @@ input.invalid-search{
         max-width: 700px;
         height: 50px;
         border-radius: 10px;
-        border: none;
         font-size: 20px;
         padding: 5px 0px 5px 20px;
 
