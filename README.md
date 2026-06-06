@@ -1,4 +1,4 @@
-# 🌤️ Weather Forecast App
+# 🌤️ Weather dashboard
 
 A responsive weather application built using HTML, CSS, and JavaScript that provides real-time weather information and a 5-day forecast using the OpenWeather API.
 
