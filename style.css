@@ -188,7 +188,7 @@ input.invalid-search{
         display: flex;
         justify-content: center;
         align-items: center;
-        height: 40vh;
+        height: 45vh;
         flex-direction: column;
         /* margin-top: 50px; */
     }

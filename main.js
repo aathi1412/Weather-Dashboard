@@ -3,7 +3,7 @@ import dayjs from 'https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js';
 const API_KEY = 'a856a832c1394edf622f5ec5b344a1dd';
 
 
-// -----------------------datae time
+// -----------------------date time
 const setTime = document.querySelector('.js-time');
 const setDate = document.querySelector('.js-date');
 
@@ -40,6 +40,15 @@ function getCurrentLocation(){
             currentWeatherData(weatherData);
             forecastAPI(forecastData);
             getPlace(currentLocation);
+
+            console.log("⚠️ Weather data provided by OpenWeather.");
+            console.log("⚠️ For reference purposes only. Use this data responsibly.");
+            console.log("currentLocation");
+            console.log(currentLocation);
+            console.log("currentLocation Weather Data");
+            console.log(weatherData);
+            console.log("currentLocation Forecast Data");
+            console.log(forecastData);
         }
         catch(error){
             alert(error);
@@ -147,6 +156,11 @@ let currentWeatherAPI = async (data) => {
 
         currentWeatherData(weatherData);
         forecastAPI(forecastData);
+
+        console.log("Current Weather");
+        console.log(weatherData);
+        console.log("Forecast Weather");
+        console.log(forecastData);
     }
     catch(error){
         alert(error);
@@ -169,7 +183,7 @@ let currentWeatherData = (data) => {
     const { main, icon } = data.weather[0];
     const { all } = data.clouds;
     const { speed } = data.wind;
-    // const today = date.getDate();
+
 
     let html = `
         <div class="current-weather-box">
@@ -257,7 +271,6 @@ let forecastAPI = (data) => {
         const forecastDate = dayjs(days.dt_txt).format("YYYY-MM-DD");
         return ( forecastDate !== today && days.dt_txt.includes("12:00:00") );
     });
-    console.log(dailyForecast);
 
     let totalHTML = '';
     dailyForecast.forEach((day) => {
